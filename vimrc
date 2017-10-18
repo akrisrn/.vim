@@ -8,11 +8,11 @@ function! MySys()
 endfunction
 "用户目录变量$VIMFILES
 if MySys() == "windows"
-    let $VIMFILES = $VIM.'/vimfiles'
+    let $VIMFILES = $HOME.'\vimfiles'
 elseif MySys() == "linux"
     let $VIMFILES = $HOME.'/.vim'
 endif
-let $VIMRCVER=system('git --git-dir='.$VIMFILES.'/.git rev-list --branches | head -n 1 | cut -b 1-5')
+let $VIMRCVER=system('git -C '.$VIMFILES.' rev-list --branches --max-count=1')
 command Vimrcver echo $VIMRCVER
 "关闭vi兼容模式
 set nocompatible
