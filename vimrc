@@ -1,3 +1,19 @@
+"返回操作系统类型函数
+function! MySys()
+    if has("win16") || has("win32") || has("win64") || has("win95")
+        return "windows"
+    elseif has("unix")
+        return "linux"
+    endif
+endfunction
+"用户目录变量$VIMFILES
+if MySys() == "windows"
+    let $VIMFILES = $VIM.'/vimfiles'
+elseif MySys() == "linux"
+    let $VIMFILES = $HOME.'/.vim'
+endif
+let $VIMRCVER=system('git --git-dir='.$VIMFILES.'/.git rev-list --branches | head -n 1 | cut -b 1-5')
+command Vimrcver echo $VIMRCVER
 "关闭vi兼容模式
 set nocompatible
 "设置backspace的工作方式
@@ -47,8 +63,6 @@ source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 "高亮显示搜索结果
 set hlsearch
-"修改文件后自动备份
-set backup
 "搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感
 set ignorecase smartcase
 "开启折叠
