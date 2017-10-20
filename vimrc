@@ -44,8 +44,6 @@ set softtabstop=4
 set showmatch
 "设置魔术匹配
 set magic
-"关闭错误时的响声
-set vb t_vb=
 "打开状态栏标尺
 set ruler
 "高亮显示游标所在行
