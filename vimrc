@@ -50,6 +50,8 @@ set vb t_vb=
 set ruler
 "高亮显示游标所在行
 set cursorline
+"高亮显示游标所在列
+set cursorcolumn
 "实时匹配并高亮搜索结果
 set incsearch
 "设置GUI显示字体和大小
