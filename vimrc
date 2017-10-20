@@ -101,3 +101,6 @@ let g:rainbow_conf = {
     \       'css': 0,
     \   }
     \}
+
+"vim-gitgutter config
+set updatetime=250
