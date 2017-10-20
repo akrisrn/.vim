@@ -16,3 +16,6 @@
 [submodule "bundle/vim-auto-save"]
 	path = bundle/vim-auto-save
 	url = https://github.com/vim-scripts/vim-auto-save.git
+[submodule "bundle/vim-commentary"]
+	path = bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
