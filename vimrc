@@ -75,3 +75,6 @@ set foldmethod=syntax
 set foldcolumn=0
 "设置折叠层数
 setlocal foldlevel=1
+
+"vim-easymotion config
+map <Leader><leader>. <Plug>(easymotion-repeat)
