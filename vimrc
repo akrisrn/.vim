@@ -104,3 +104,6 @@ let g:rainbow_conf = {
 
 "vim-gitgutter config
 set updatetime=250
+
+"vim-auto-save config
+let g:auto_save = 1
