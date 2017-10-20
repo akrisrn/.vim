@@ -104,6 +104,16 @@ let g:rainbow_conf = {
 
 "vim-gitgutter config
 set updatetime=250
+nmap <Leader>ha <Plug>GitGutterStageHunk
+nmap <Leader>hr <Plug>GitGutterUndoHunk
+nmap <Leader>hv <Plug>GitGutterPreviewHunk
 
 "vim-auto-save config
 let g:auto_save = 1
+
+"<leader>映射为空格
+let mapleader = "\<Space>"
+nnoremap <Leader>o :CtrlP<CR>
+
+"键盘映射
+nnoremap <Leader>w :w<CR>
