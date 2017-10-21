@@ -74,6 +74,9 @@ set foldcolumn=0
 "设置折叠层数
 setlocal foldlevel=1
 
+"<leader>映射为空格
+let mapleader = ","
+
 "vim-easymotion config
 map <Leader><leader>. <Plug>(easymotion-repeat)
 
@@ -104,15 +107,12 @@ let g:rainbow_conf = {
 
 "vim-gitgutter config
 set updatetime=250
-nmap <Leader><Leader>hs <Plug>GitGutterStageHunk
-nmap <Leader><Leader>hu <Plug>GitGutterUndoHunk
-nmap <Leader><Leader>hp <Plug>GitGutterPreviewHunk
+nmap <Leader>hs <Plug>GitGutterStageHunk
+nmap <Leader>hu <Plug>GitGutterUndoHunk
+nmap <Leader>hp <Plug>GitGutterPreviewHunk
 
 "vim-auto-save config
 let g:auto_save = 1
-
-"<leader>映射为空格
-let mapleader = ","
 
 "键盘映射
 nnoremap <Leader>w :w<CR>
