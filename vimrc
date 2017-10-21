@@ -104,9 +104,9 @@ let g:rainbow_conf = {
 
 "vim-gitgutter config
 set updatetime=250
-nmap <Leader>ha <Plug>GitGutterStageHunk
-nmap <Leader>hr <Plug>GitGutterUndoHunk
-nmap <Leader>hv <Plug>GitGutterPreviewHunk
+nmap <Leader><Leader>hs <Plug>GitGutterStageHunk
+nmap <Leader><Leader>hu <Plug>GitGutterUndoHunk
+nmap <Leader><Leader>hp <Plug>GitGutterPreviewHunk
 
 "vim-auto-save config
 let g:auto_save = 1
