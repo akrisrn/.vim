@@ -116,6 +116,3 @@ let mapleader = ","
 
 "键盘映射
 nnoremap <Leader>w :w<CR>
-
-"启用鼠标
-set mouse=a
