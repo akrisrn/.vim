@@ -112,8 +112,10 @@ nmap <Leader>hv <Plug>GitGutterPreviewHunk
 let g:auto_save = 1
 
 "<leader>映射为空格
-let mapleader = "\<Space>"
-nnoremap <Leader>o :CtrlP<CR>
+let mapleader = ","
 
 "键盘映射
 nnoremap <Leader>w :w<CR>
+
+"启用鼠标
+set mouse=a
