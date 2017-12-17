@@ -39,8 +39,8 @@ command Vimrcver echo $VIMRCVER
 set backspace=indent,eol,start
 "语法高亮
 syntax on
-"显示行号
-set number
+"显示关联行号
+set number relativenumber
 "配色方案
 colorscheme molokai
 "自动对齐
