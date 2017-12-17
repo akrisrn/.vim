@@ -1,3 +1,21 @@
+"关闭vi兼容模式
+set nocompatible
+"关闭文件类型检测, Vundle需求
+filetype off
+"把Vundle加入到运行时路径中
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'luochen1990/rainbow'
+Plugin 'vim-scripts/vim-auto-save'
+Plugin 'tpope/vim-commentary'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-surround'
+call vundle#end()
+"检测文件类型，打开基于文件类型的插件和缩进
+filetype plugin indent on
 "返回操作系统类型函数
 function! MySys()
     if has("win16") || has("win32") || has("win64") || has("win95")
@@ -14,14 +32,10 @@ elseif MySys() == "linux"
 endif
 let $VIMRCVER=system('git -C '.$VIMFILES.' rev-list --branches --max-count=1')
 command Vimrcver echo $VIMRCVER
-"关闭vi兼容模式
-set nocompatible
 "设置backspace的工作方式
 set backspace=indent,eol,start
 "语法高亮
 syntax on
-"检测文件类型，打开基于文件类型的插件和缩进
-filetype plugin indent on
 "显示行号
 set number
 "配色方案
