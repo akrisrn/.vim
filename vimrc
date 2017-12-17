@@ -13,6 +13,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
+Plugin 'flazz/vim-colorschemes'
 call vundle#end()
 "检测文件类型，打开基于文件类型的插件和缩进
 filetype plugin indent on
