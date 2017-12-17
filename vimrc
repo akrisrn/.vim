@@ -18,8 +18,6 @@ command Vimrcver echo $VIMRCVER
 set nocompatible
 "设置backspace的工作方式
 set backspace=indent,eol,start
-"启用pathogen管理插件
-execute pathogen#infect()
 "语法高亮
 syntax on
 "检测文件类型，打开基于文件类型的插件和缩进
