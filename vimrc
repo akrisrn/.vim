@@ -74,6 +74,8 @@ set guifont=Source\ Code\ Pro:h11
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set termencoding=utf-8
 set encoding=utf-8
+"设置vim语言为英文
+language en_US.utf8
 "解决GVIM菜单乱码
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
