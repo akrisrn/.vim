@@ -129,6 +129,7 @@ nmap <Leader>hp <Plug>GitGutterPreviewHunk
 
 "vim-auto-save config
 let g:auto_save = 1
+let g:auto_save_in_insert_mode = 0
 
 "键盘映射
 nnoremap <Leader>w :w<CR>
