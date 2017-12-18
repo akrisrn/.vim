@@ -17,6 +17,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'roxma/vim-tmux-clipboard'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-syntastic/syntastic'
 call vundle#end()
 "检测文件类型，打开基于文件类型的插件和缩进
 filetype plugin indent on
@@ -91,9 +92,19 @@ set foldmethod=syntax
 set foldcolumn=0
 "设置折叠层数
 setlocal foldlevel=1
-
-"<leader>映射为空格
+"<leader>映射为逗号
 let mapleader = ","
+"键盘映射
+nnoremap <Leader>w :w<CR>
+
+"TMUX使用中的光标变化
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
+else
+    let &t_SI = "\e[5 q"
+    let &t_EI = "\e[2 q"
+endif
 
 "vim-easymotion config
 map <Leader><leader>. <Plug>(easymotion-repeat)
@@ -133,14 +144,11 @@ nmap <Leader>hp <Plug>GitGutterPreviewHunk
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
 
-"键盘映射
-nnoremap <Leader>w :w<CR>
-
-"TMUX使用中的光标变化
-if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
-else
-    let &t_SI = "\e[5 q"
-    let &t_EI = "\e[2 q"
-endif
+"syntastic config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
