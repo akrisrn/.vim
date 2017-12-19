@@ -1,8 +1,8 @@
-"关闭vi兼容模式
+" 关闭vi兼容模式
 set nocompatible
-"关闭文件类型检测, Vundle需求
+" 关闭文件类型检测, Vundle需求
 filetype off
-"把Vundle加入到运行时路径中
+" 把Vundle加入到运行时路径中
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -24,9 +24,9 @@ Plugin 'elzr/vim-json'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 call vundle#end()
-"检测文件类型，打开基于文件类型的插件和缩进
+" 检测文件类型，打开基于文件类型的插件和缩进
 filetype plugin indent on
-"返回操作系统类型函数
+" 返回操作系统类型函数
 function! MySys()
     if has("win16") || has("win32") || has("win64") || has("win95")
         return "windows"
@@ -34,7 +34,7 @@ function! MySys()
         return "linux"
     endif
 endfunction
-"用户目录变量$VIMFILES
+" 用户目录变量$VIMFILES
 if MySys() == "windows"
     let $VIMFILES = $HOME.'\vimfiles'
 elseif MySys() == "linux"
@@ -42,67 +42,67 @@ elseif MySys() == "linux"
 endif
 let $VIMRCVER=system('git -C '.$VIMFILES.' rev-list --branches --max-count=1')
 command Vimrcver echo $VIMRCVER
-"设置backspace的工作方式
+" 设置backspace的工作方式
 set backspace=indent,eol,start
-"语法高亮
+" 语法高亮
 syntax on
-"显示关联行号
+" 显示关联行号
 set number relativenumber
-"配色方案
+" 配色方案
 colorscheme molokai
-"自动对齐
+" 自动对齐
 set autoindent
-"智能选择对齐方式
+" 智能选择对齐方式
 set smartindent
-"tab转换为空格
+" tab转换为空格
 set expandtab
-"设置tab为4个空格
+" 设置tab为4个空格
 set tabstop=4
-"设置按<<和>>时的缩进量为4个空格
+" 设置按<<和>>时的缩进量为4个空格
 set shiftwidth=4
-"设置退格键一次清除4个空格
+" 设置退格键一次清除4个空格
 set softtabstop=4
-"设置括号匹配
+" 设置括号匹配
 set showmatch
-"设置魔术匹配
+" 设置魔术匹配
 set magic
-"打开状态栏标尺
+" 打开状态栏标尺
 set ruler
-"高亮显示游标所在行
+" 高亮显示游标所在行
 set cursorline
-"高亮显示游标所在列
+" 高亮显示游标所在列
 set cursorcolumn
-"实时匹配并高亮搜索结果
+" 实时匹配并高亮搜索结果
 set incsearch
-"设置GUI显示字体和大小
+" 设置GUI显示字体和大小
 set guifont=Source\ Code\ Pro:h11
-"设置字符编码
+" 设置字符编码
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set termencoding=utf-8
 set encoding=utf-8
-"设置vim语言为英文
+" 设置vim语言为英文
 language en_US.utf8
-"解决GVIM菜单乱码
+" 解决GVIM菜单乱码
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
-"高亮显示搜索结果
+" 高亮显示搜索结果
 set hlsearch
-"搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感
+" 搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感
 set ignorecase smartcase
-"开启折叠
+" 开启折叠
 set foldenable              
-"设置语法折叠
+" 设置语法折叠
 set foldmethod=syntax
-"设置折叠区域的宽度 
+" 设置折叠区域的宽度
 set foldcolumn=0
-"设置折叠层数
+" 设置折叠层数
 setlocal foldlevel=1
-"<leader>映射为逗号
+" <leader>映射为逗号
 let mapleader = ","
-"键盘映射
+" 键盘映射
 nnoremap <Leader>w :w<CR>
 
-"TMUX使用中的光标变化
+" TMUX使用中的光标变化
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
@@ -111,10 +111,10 @@ else
     let &t_EI = "\e[2 q"
 endif
 
-"vim-easymotion config
+" vim-easymotion config
 map <Leader><leader>. <Plug>(easymotion-repeat)
 
-"rainbow config
+" rainbow config
 let g:rainbow_active = 1
 let g:rainbow_conf = {
     \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
@@ -139,17 +139,17 @@ let g:rainbow_conf = {
     \   }
     \}
 
-"vim-gitgutter config
+" vim-gitgutter config
 set updatetime=250
 nmap <Leader>hs <Plug>GitGutterStageHunk
 nmap <Leader>hu <Plug>GitGutterUndoHunk
 nmap <Leader>hp <Plug>GitGutterPreviewHunk
 
-"vim-auto-save config
+" vim-auto-save config
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
 
-"syntastic config
+" syntastic config
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
