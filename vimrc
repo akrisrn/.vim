@@ -91,14 +91,6 @@ source $VIMRUNTIME/menu.vim
 set hlsearch
 " 搜索时忽略大小写，但在有一个或以上大写字母时仍保持对大小写敏感
 set ignorecase smartcase
-" 开启折叠
-set foldenable              
-" 设置语法折叠
-set foldmethod=syntax
-" 设置折叠区域的宽度
-set foldcolumn=0
-" 设置折叠层数
-setlocal foldlevel=1
 " <leader>映射为逗号
 let mapleader = ","
 " 键盘映射
