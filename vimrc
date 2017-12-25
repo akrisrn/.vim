@@ -10,7 +10,6 @@ Plugin 'luochen1990/rainbow'
 Plugin 'vim-scripts/vim-auto-save'
 Plugin 'tpope/vim-commentary'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'airblade/vim-gitgutter'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
 Plugin 'flazz/vim-colorschemes'
@@ -44,7 +43,7 @@ elseif MySys() == "linux"
     let $VIMFILES = $HOME.'/.vim'
 endif
 let $VIMRCVER=system('git -C '.$VIMFILES.' rev-list --branches --max-count=1')
-command Vimrcver echo $VIMRCVER
+command! Vimrcver echo $VIMRCVER
 " 设置backspace的工作方式
 set backspace=indent,eol,start
 " 语法高亮
@@ -141,12 +140,6 @@ let g:rainbow_conf = {
     \       'css': 0,
     \   }
     \}
-
-" vim-gitgutter config
-set updatetime=250
-nmap <Leader>hs <Plug>GitGutterStageHunk
-nmap <Leader>hu <Plug>GitGutterUndoHunk
-nmap <Leader>hp <Plug>GitGutterPreviewHunk
 
 " vim-auto-save config
 let g:auto_save = 1
