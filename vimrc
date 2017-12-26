@@ -133,6 +133,8 @@ else
 endif
 
 " vim-easymotion config
+map <Leader><leader>h <Plug>(easymotion-linebackward)
+map <Leader><leader>l <Plug>(easymotion-lineforward)
 map <Leader><leader>. <Plug>(easymotion-repeat)
 
 " rainbow config
