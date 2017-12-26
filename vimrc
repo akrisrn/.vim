@@ -7,6 +7,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'chikamichi/mediawiki.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'Yggdroot/indentLine'
