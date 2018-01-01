@@ -1,3 +1,5 @@
+" 设置默认shell为bash
+set shell=bash
 " 关闭vi兼容模式
 set nocompatible
 " 关闭文件类型检测, Vundle需求
