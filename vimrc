@@ -12,6 +12,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 " mediawiki语法支持
 Plugin 'chikamichi/mediawiki.vim'
+" fish脚本编辑支持
+Plugin 'dag/vim-fish'
 " 括号补全
 Plugin 'Raimondi/delimitMate'
 " 代码补全
