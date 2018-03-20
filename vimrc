@@ -12,11 +12,13 @@ if MySys() == "linux"
 endif
 " 关闭vi兼容模式
 set nocompatible
+" 如果plug.vim不存在则自动下载
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+" 启动plug.vim插件管理
 call plug#begin()
 " git常用命令封装，行号旁修改状态显示
 Plug 'airblade/vim-gitgutter'
