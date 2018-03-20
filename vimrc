@@ -1,3 +1,5 @@
+" 关闭vi兼容模式
+set nocompatible
 " 返回操作系统类型函数
 function! MySys()
     if has("win16") || has("win32") || has("win64") || has("win95")
@@ -10,13 +12,13 @@ endfunction
 if MySys() == "linux"
     set shell=bash
 endif
-" 关闭vi兼容模式
-set nocompatible
 " 如果plug.vim不存在则自动下载
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+if MySys() == "linux"
+    if empty(glob('~/.vim/autoload/plug.vim'))
+        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+            \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    endif
 endif
 " 启动plug.vim插件管理
 call plug#begin()
