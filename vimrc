@@ -1,12 +1,27 @@
+" 返回操作系统类型函数
+function! MySys()
+    if has("win16") || has("win32") || has("win64") || has("win95")
+        return "windows"
+    elseif has("unix")
+        return "linux"
+    endif
+endfunction
 " 设置默认shell为bash
-set shell=bash
+if MySys() == "linux"
+    set shell=bash
+endif
 " 关闭vi兼容模式
 set nocompatible
 " 关闭文件类型检测, Vundle需求
 filetype off
 " 把Vundle加入到运行时路径中
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if MySys() == "windows"
+    set rtp+=$HOME/vimfiles/bundle/Vundle.vim
+    call vundle#begin('$HOME/vimfiles/bundle/')
+elseif MySys() == "linux"
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+endif
 Plugin 'VundleVim/Vundle.vim'
 " git常用命令封装，行号旁修改状态显示
 Plugin 'airblade/vim-gitgutter'
@@ -59,14 +74,6 @@ Plugin 'vim-syntastic/syntastic'
 call vundle#end()
 " 检测文件类型，打开基于文件类型的插件和缩进
 filetype plugin indent on
-" 返回操作系统类型函数
-function! MySys()
-    if has("win16") || has("win32") || has("win64") || has("win95")
-        return "windows"
-    elseif has("unix")
-        return "linux"
-    endif
-endfunction
 " 用户目录变量$VIMFILES
 if MySys() == "windows"
     let $VIMFILES = $HOME.'\vimfiles'
@@ -113,8 +120,6 @@ set guifont=Source\ Code\ Pro:h11
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set termencoding=utf-8
 set encoding=utf-8
-" 设置vim语言为英文
-language en_US.utf8
 " 解决GVIM菜单乱码
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
