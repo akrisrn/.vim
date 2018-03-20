@@ -69,6 +69,10 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/vim-auto-save'
 " 语法检查
 Plugin 'vim-syntastic/syntastic'
+" 侧边栏目录浏览
+Plugin 'scrooloose/nerdtree'
+" 侧边栏目录支持git标记
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 call vundle#end()
 " 检测文件类型，打开基于文件类型的插件和缩进
 filetype plugin indent on
@@ -184,3 +188,10 @@ let g:syntastic_check_on_wq = 0
 
 " vim-commentary config
 autocmd FileType apache set cms=#\ %s
+
+" nerdtree config
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+nnoremap <Leader>q :NERDTreeToggle<CR>
+nnoremap <Leader>a :NERDTreeFocus<CR>
