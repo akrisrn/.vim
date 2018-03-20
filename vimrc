@@ -12,70 +12,63 @@ if MySys() == "linux"
 endif
 " 关闭vi兼容模式
 set nocompatible
-" 关闭文件类型检测, Vundle需求
-filetype off
-" 把Vundle加入到运行时路径中
-if MySys() == "windows"
-    set rtp+=$HOME/vimfiles/bundle/Vundle.vim
-    call vundle#begin('$HOME/vimfiles/bundle/')
-elseif MySys() == "linux"
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin()
 " git常用命令封装，行号旁修改状态显示
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " mediawiki语法支持
-Plugin 'chikamichi/mediawiki.vim'
+Plug 'chikamichi/mediawiki.vim'
 " fish脚本编辑支持
-Plugin 'dag/vim-fish'
+Plug 'dag/vim-fish'
 " 括号补全
-Plugin 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 " 代码结构垂直线
-Plugin 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 " 快速移动
-Plugin 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 " json语法支持
-Plugin 'elzr/vim-json'
+Plug 'elzr/vim-json'
 " 配色方案
-Plugin 'flazz/vim-colorschemes'
+Plug 'flazz/vim-colorschemes'
 " 文本过滤与对齐
-Plugin 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 " fugitive插件，git log展示
-Plugin 'gregsexton/gitv'
+Plug 'gregsexton/gitv'
 " 多彩括号
-Plugin 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow'
 " markdown语法支持
-Plugin 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown'
 " vim和tmux剪切板互通
-Plugin 'roxma/vim-tmux-clipboard'
+Plug 'roxma/vim-tmux-clipboard'
 " 多行编辑
-Plugin 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 " tmux中vim恢复focus events
-Plugin 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 " 代码注释
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 " git命令封装
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " 重复命令
-Plugin 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 " 代码包围
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " 状态栏
-Plugin 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 " 状态栏样式
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes'
 " 自动保存
-Plugin 'vim-scripts/vim-auto-save'
+Plug 'vim-scripts/vim-auto-save'
 " 语法检查
-Plugin 'vim-syntastic/syntastic'
+Plug 'vim-syntastic/syntastic'
 " 侧边栏目录浏览
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 " 侧边栏目录支持git标记
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-call vundle#end()
-" 检测文件类型，打开基于文件类型的插件和缩进
-filetype plugin indent on
+Plug 'Xuyuanp/nerdtree-git-plugin'
+call plug#end()
 " 用户目录变量$VIMFILES
 if MySys() == "windows"
     let $VIMFILES = $HOME.'\vimfiles'
@@ -86,8 +79,6 @@ let $VIMRCVER=system('git -C '.$VIMFILES.' rev-list --branches --max-count=1')
 command! Vimrcver echo $VIMRCVER
 " 设置backspace的工作方式
 set backspace=indent,eol,start
-" 语法高亮
-syntax on
 " 显示关联行号
 set number relativenumber
 " 配色方案
