@@ -31,8 +31,6 @@ Plugin 'chikamichi/mediawiki.vim'
 Plugin 'dag/vim-fish'
 " 括号补全
 Plugin 'Raimondi/delimitMate'
-" 代码补全
-Plugin 'Valloric/YouCompleteMe'
 " 代码结构垂直线
 Plugin 'Yggdroot/indentLine'
 " 快速移动
