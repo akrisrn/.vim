@@ -8,14 +8,18 @@ function! MySys()
         return "linux"
     endif
 endfunction
-" 设置默认shell为bash
-if MySys() == "linux"
+let $SYS = MySys()
+if $SYS == "windows"
+    " windows配置目录
+    let $VIMFILES = $HOME.'\vimfiles'
+elseif $SYS == "linux"
+    " linux配置目录
+    let $VIMFILES = $HOME.'/.vim'
+    " 设置默认shell为bash
     set shell=bash
-endif
-" 如果plug.vim不存在则自动下载
-if MySys() == "linux"
-    if empty(glob('~/.vim/autoload/plug.vim'))
-        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    " 如果plug.vim不存在则自动下载
+    if empty(glob($VIMFILES.'/autoload/plug.vim'))
+        silent !curl -fLo $VIMFILES/autoload/plug.vim --create-dirs
             \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
@@ -72,13 +76,18 @@ Plug 'vim-syntastic/syntastic'
 Plug 'scrooloose/nerdtree'
 " 侧边栏目录支持git标记
 Plug 'Xuyuanp/nerdtree-git-plugin'
-call plug#end()
-" 用户目录变量$VIMFILES
-if MySys() == "windows"
-    let $VIMFILES = $HOME.'\vimfiles'
-elseif MySys() == "linux"
-    let $VIMFILES = $HOME.'/.vim'
+" 文本对齐
+Plug 'junegunn/vim-easy-align'
+" 代码片段
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+if $SYS == "linux"
+    " 模糊查找器
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    " 代码补全
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 endif
+call plug#end()
+" 查看当前vim配置的git提交
 let $VIMRCVER=system('git -C '.$VIMFILES.' rev-list --branches --max-count=1')
 command! Vimrcver echo $VIMRCVER
 " 设置backspace的工作方式
@@ -191,3 +200,13 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nnoremap <Leader>q :NERDTreeToggle<CR>
 nnoremap <Leader>a :NERDTreeFocus<CR>
+
+" vim-easy-align config
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+" ultisnips conifg
+let g:UltiSnipsExpandTrigger="<c-x>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
