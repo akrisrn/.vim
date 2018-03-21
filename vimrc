@@ -80,6 +80,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/vim-easy-align'
 " 代码片段
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/seoul256.vim'
 if $SYS == "linux"
     " 模糊查找器
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -94,8 +97,6 @@ command! Vimrcver echo $VIMRCVER
 set backspace=indent,eol,start
 " 显示关联行号
 set number relativenumber
-" 配色方案
-colorscheme molokai
 " 自动对齐
 set autoindent
 " 智能选择对齐方式
@@ -210,3 +211,35 @@ let g:UltiSnipsExpandTrigger="<c-x>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
+
+" goyo config
+let g:goyo_width="70%"
+let g:goyo_height="100%"
+function! s:goyo_enter()
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+    set noshowmode
+    set noshowcmd
+    set scrolloff=999
+    Limelight
+endfunction
+function! s:goyo_leave()
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+    set showmode
+    set showcmd
+    set scrolloff=5
+    Limelight!
+endfunction
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+" limelight config
+nmap <Leader>l <Plug>(Limelight)
+xmap <Leader>l <Plug>(Limelight)
+
+" seoul256 config
+let g:seoul256_background = 233
+let g:seoul256_light_background = 256
+let g:seoul256_srgb = 1
+colo seoul256
