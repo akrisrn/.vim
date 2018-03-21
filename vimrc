@@ -113,6 +113,7 @@ set cursorcolumn
 set incsearch
 " 设置GUI显示字体和大小
 set guifont=Source\ Code\ Pro:h11
+set guifontwide=新宋体:h11:cGB2312:qDRAFT
 " 设置字符编码
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set termencoding=utf-8
