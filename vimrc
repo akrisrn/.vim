@@ -80,8 +80,11 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/vim-easy-align'
 " 代码片段
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" 沉浸模式
 Plug 'junegunn/goyo.vim'
+" 高度沉浸
 Plug 'junegunn/limelight.vim'
+" 配色方案
 Plug 'junegunn/seoul256.vim'
 if $SYS == "linux"
     " 模糊查找器
