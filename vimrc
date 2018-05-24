@@ -78,8 +78,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " 文本对齐
 Plug 'junegunn/vim-easy-align'
-" 代码片段
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " 沉浸模式
 Plug 'junegunn/goyo.vim'
 " 高度沉浸
@@ -91,6 +89,8 @@ if $SYS == "linux"
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     " 代码补全
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+    " 代码片段
+    Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 endif
 call plug#end()
 " 查看当前vim配置的git提交
