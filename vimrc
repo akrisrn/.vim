@@ -246,3 +246,6 @@ let g:seoul256_background = 233
 let g:seoul256_light_background = 256
 let g:seoul256_srgb = 1
 colo seoul256
+
+" vim-airline config
+let g:airline_powerline_fonts = 1
