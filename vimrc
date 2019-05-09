@@ -87,8 +87,6 @@ Plug 'junegunn/seoul256.vim'
 if $SYS == "linux"
     " 模糊查找器
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    " 代码补全
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
     " 代码片段
     Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 endif
