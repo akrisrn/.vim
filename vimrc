@@ -1,5 +1,6 @@
 " 关闭vi兼容模式
 set nocompatible
+
 " 返回操作系统类型函数
 function! MySys()
     if has("win16") || has("win32") || has("win64") || has("win95")
@@ -8,6 +9,7 @@ function! MySys()
         return "linux"
     endif
 endfunction
+
 let $SYS = MySys()
 if $SYS == "windows"
     " windows配置目录
@@ -24,6 +26,7 @@ elseif $SYS == "linux"
         autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
     endif
 endif
+
 " 启动plug.vim插件管理
 call plug#begin()
 " git常用命令封装，行号旁修改状态显示
@@ -91,6 +94,7 @@ if $SYS == "linux"
     Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 endif
 call plug#end()
+
 " 查看当前vim配置的git提交
 let $VIMRCVER=system('git -C '.$VIMFILES.' rev-list --branches --max-count=1')
 command! Vimrcver echo $VIMRCVER
